@@ -65,7 +65,7 @@ router.get('/courses/:id', asyncHandler(async(req, res) => {
 router.post('/courses', authenticateUser, asyncHandler(async (req, res) => {
     try {
         let course=  await Course.create(req.body)
-      res.location(`courses/${course.id}`).status(201).json({ "message": "Course successfully created!" }).end();
+      res.status(201).location(`courses/${course.id}`).end();
     } catch (error) {
       if (error.name === 'SequelizeValidationError' || error.name === 'SequelizeUniqueConstraintError') {
         const errors = error.errors.map(err => err.message);
@@ -77,7 +77,7 @@ router.post('/courses', authenticateUser, asyncHandler(async (req, res) => {
   }));
 
 //Route that will update the corresponding course 
-router.post ('/courses/:id', authenticateUser, asyncHandler(async(req, res) => {
+router.put ('/courses/:id', authenticateUser, asyncHandler(async(req, res) => {
     try {
         const course = await Course.findByPk(req.params.id);
         if(course){
