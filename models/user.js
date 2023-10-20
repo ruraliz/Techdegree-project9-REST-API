@@ -70,7 +70,6 @@ module.exports = (sequelize) => {
         as: 'courseUser',
         foreignKey:{
           firstName: 'userId',
-          allowNull: false,
         }
       })
     }

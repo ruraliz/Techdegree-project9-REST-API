@@ -3,7 +3,8 @@
 const { Model, DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-    class Course extends Model {}
+    class Course extends Model {
+    }
     Course.init({
         title:{
             type: DataTypes.STRING,
@@ -41,7 +42,7 @@ module.exports = (sequelize) => {
             as: 'courseUser',
             foreignKey:{
                 fieldName: 'userId',
-                allowNull: false,
+                allowNull: false
             }
         })
     }
