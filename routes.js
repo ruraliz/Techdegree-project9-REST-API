@@ -85,7 +85,7 @@ router.post ('/courses/:id', authenticateUser, asyncHandler(async(req, res) => {
                 await course.update(req.body)
                 res.status(204).end();
             }else{
-                res.status(403).json({message: "Access denied."})
+                res.status(403).json({message: 'User does not own requested course. Access denied.'})
             }
         } else{
             res.status(404).json({message: 'The course was not found.'})
@@ -110,7 +110,7 @@ router.delete ('/courses/:id', authenticateUser, asyncHandler(async(req, res) =>
                 await course.destroy();
                 res.status(204).end();
             } else{
-                res.status(403).json({message: 'Access denied.'})
+                res.status(403).json({message: 'User does not own requested course. Access denied.'})
             }
         }else{
             res.status(404).json({message: 'The course was not found.'})
