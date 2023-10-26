@@ -3,6 +3,7 @@
 // load modules
 const express = require('express');
 const morgan = require('morgan');
+cors = require('cors')
 const { sequelize } = require('./models');
 const routes= require('./routes')
 
